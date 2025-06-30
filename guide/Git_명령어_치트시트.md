@@ -112,7 +112,7 @@ git merge --continue
 ```bash
 # 임시 저장
 git stash
-git stash save "메시지"
+git stash push -m "메시지"  # 권장 방식
 
 # stash 목록 확인
 git stash list
@@ -185,30 +185,37 @@ git <command> --help
 
 ## 🎯 실습별 주요 명령어
 
-### 1강 - main에서 작업 실수 (15분)
+### 1수업 - main에서 작업 실수 (15분)
 - `git switch -c feature/login-function`
 - `git switch main`
-- `git reset --hard HEAD~1`
+- `git reset --soft HEAD~1`
 
-### 2강 - 커밋 메시지 문제 (15분)
-- `git rebase -i HEAD~3`
-- `git commit --amend -m "feat: 로그인 기능 추가"`
+### 2수업 - 커밋 메시지 문제 (15분)
+- `git switch -c feature/user-auth`
+- `git rebase -i HEAD~2`
+- `git commit --amend -m "feat: 사용자 인증 기능 추가"`
 
-### 3강 - amend 후 푸시 문제 (15분)
+### 3수업 - amend 후 푸시 문제 (15분)
+- `git switch -c feature/authentication`
 - `git commit --amend --no-edit`
-- `git push --force-with-lease origin feature/user-login`
+- `git push --force-with-lease origin feature/authentication`
 
-### 4강 - 충돌 해결 실수 (20분)
+### 4수업 - 충돌 해결 실수 (20분)
+- `git switch -c feature/user-profile`
 - `git merge feature/user-profile`
 - `git add <resolved-files>`
 - `git merge --continue`
 
-### 5강 - stash 분실 (15분)
-- `git stash save "작업 중인 기능"`
+### 5수업 - stash 분실 (15분)
+- `git switch -c feature/user-profile`
+- `git stash push -m "작업 중인 기능"`
+- `git switch -c hotfix/urgent`
+- `git switch feature/user-profile`
 - `git stash list`
-- `git stash apply stash@{1}`
+- `git stash apply stash@{0}`
 
-### 6강 - force push 사고 (20분)
+### 6수업 - force push 사고 (20분)
+- `git switch -c feature/important`
 - `git reflog`
-- `git switch -c recovery-main <commit-hash>`
-- `git push --force-with-lease origin main`
+- `git reset --hard <commit-hash>`
+- `git push --force-with-lease origin feature/important`

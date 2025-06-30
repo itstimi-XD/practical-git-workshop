@@ -22,7 +22,6 @@ Thumbs.db
 *.log
 
 # 강의자용 파일 (커밋에 포함하지 않음)
-강의자용_가이드.md
 강의자용_시연_스크립트.md
 
 # OS generated files
